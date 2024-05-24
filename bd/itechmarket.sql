@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2024 г., 11:13
+-- Время создания: Май 24 2024 г., 13:24
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -33,6 +33,19 @@ CREATE TABLE `assortment` (
   `Quantity` bigint(20) NOT NULL,
   `Price` bigint(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Дамп данных таблицы `assortment`
+--
+
+INSERT INTO `assortment` (`ID_Product`, `Name_Product`, `Quantity`, `Price`) VALUES
+(1, 'Механическая клавиатура для компьютера Cyberlynx K99', 30, 2500),
+(2, 'GTHANG Беспроводная игровая мышь с усовершенствованным оптическим светодиодом', 43, 3000),
+(3, 'iTech Diamond 5', 68, 2670),
+(4, 'iTetch Titan 6 GT', 56, 2640),
+(5, 'Игровая мышка для компьютера Redragon Legend Chroma X', 73, 4500),
+(6, 'Игровая Мышь  GTHANG(V-31)', 43, 1200),
+(7, 'Игровая мышь компьютерная Defender Titan RGB Macro 6 кнопок 6400 dpi', 22, 1350);
 
 -- --------------------------------------------------------
 
@@ -71,7 +84,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `assortment`
 --
 ALTER TABLE `assortment`
-  MODIFY `ID_Product` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_Product` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
