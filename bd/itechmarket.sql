@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 24 2024 г., 13:24
+-- Время создания: Май 24 2024 г., 13:31
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -20,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `itechmarket`
 --
+CREATE DATABASE IF NOT EXISTS `itechmarket` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `itechmarket`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +30,7 @@ SET time_zone = "+00:00";
 -- Структура таблицы `assortment`
 --
 
+DROP TABLE IF EXISTS `assortment`;
 CREATE TABLE `assortment` (
   `ID_Product` bigint(20) NOT NULL,
   `Name_Product` varchar(1064) NOT NULL,
@@ -34,6 +38,11 @@ CREATE TABLE `assortment` (
   `Price` bigint(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Очистить таблицу перед добавлением данных `assortment`
+--
+
+TRUNCATE TABLE `assortment`;
 --
 -- Дамп данных таблицы `assortment`
 --
@@ -53,6 +62,7 @@ INSERT INTO `assortment` (`ID_Product`, `Name_Product`, `Quantity`, `Price`) VAL
 -- Структура таблицы `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `ID` bigint(20) NOT NULL,
   `Email` varchar(1064) NOT NULL,
@@ -60,6 +70,11 @@ CREATE TABLE `users` (
   `Password` varchar(1064) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Очистить таблицу перед добавлением данных `users`
+--
+
+TRUNCATE TABLE `users`;
 --
 -- Индексы сохранённых таблиц
 --
@@ -91,6 +106,7 @@ ALTER TABLE `assortment`
 --
 ALTER TABLE `users`
   MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
