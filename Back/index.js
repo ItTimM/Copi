@@ -28,12 +28,28 @@ connection.connect((err) => {
 });
 
 // Пример выполнения запроса к базе данных
-connection.query('SELECT * FROM users', (err, results) => {
+/* connection.query('SELECT * FROM assortment', (err, results) => {
   if (err) {
     console.error('Ошибка выполнения запроса: ', err);
     return;
   }
   console.log('Результаты запроса: ', results);
 });
+ */
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+app.get('/', function (req, res) {
+  res.send('Hello World'+req.query.a)
+})
+
+app.post('/post',(req,res)=>{
+	res.send('WoW'+req.body.a)
+})
+
+app.listen(3000)
 // Закрытие соединения с базой данных
 connection.end();
