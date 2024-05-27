@@ -1,6 +1,8 @@
 const dotenv = require ('dotenv');
+
 dotenv.config({path:".env.local"});
 const mysql = require('mysql');
+var cors = require('cors')
 var db_host = process.env.db_host;
 var db_user = process.env.db_user;
 var db_psw = process.env.db_psw;
@@ -40,16 +42,36 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
 
+app.use(cors())
+
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
   res.send('Hello World'+req.query.a)
 })
 
-app.post('/post',(req,res)=>{
-	res.send('WoW'+req.body.a)
-})
 
+app.post('/calculate', (req, res) => {
+  const { num1, num2, operation } = req.body;
+  let result;
+
+  switch(operation) {
+      case 'add':
+          result = Number(num1) + Number(num2);
+          break;
+      case 'subtract':
+          result = Number(num1) - Number(num2);
+          break;
+      case 'multiply':
+          result = Number(num1) * Number(num2);
+          break;
+      case 'divide':
+          result = Number(num1) / Number(num2);
+          break;
+  }
+
+  res.status(200).json({ result: result });
+});
 app.listen(3000)
 // Закрытие соединения с базой данных
 connection.end();
